@@ -120,7 +120,7 @@ struct GameCreationPage:View {
     }.padding(.top,28)
     ScrollView(.horizontal,showsIndicators:false) {
      HStack(spacing:8) {
-      ForEach(["Overview","Scenes","Worlds","Characters","Game Logic","Animation","Game UI","Assets","Audio","VFX","Prompt Blocks","AI Generation","Preview & Build"],id:\\.self) { tab in
+      ForEach(["Overview","Scenes","Worlds","Characters","Game Logic","Animation","Game UI","Assets","Audio","VFX","Prompt Blocks","AI Generation","Preview & Build"],id:\.self) { tab in
        Button { selected=tab } label: {
         Text(tab).font(.system(size:10,weight:.medium)).padding(.horizontal,12).padding(.vertical,8)
          .background(selected==tab ? .blue.opacity(0.28):.white.opacity(0.06),in:Capsule())
@@ -130,7 +130,7 @@ struct GameCreationPage:View {
     }
     if selected=="Overview" {
      LazyVGrid(columns:[GridItem(.adaptive(minimum:205),spacing:12)],spacing:12) {
-      ForEach(sections,id:\\.0) { item in
+      ForEach(sections,id:\.0) { item in
        Button { selected=item.0 } label: {
         VStack(alignment:.leading,spacing:10) {
          Image(systemName:item.2).font(.system(size:20)).foregroundStyle(.cyan)
@@ -167,7 +167,7 @@ struct CodeWorkspacePage:View {
    }
    HStack {
     TextField("Filename",text:$filename).textFieldStyle(.roundedBorder).frame(maxWidth:220)
-    Picker("Language",selection:$language){ForEach(languages,id:\\.self){Text($0).tag($0)}}.frame(width:160)
+    Picker("Language",selection:$language){ForEach(languages,id:\.self){Text($0).tag($0)}}.frame(width:160)
     Spacer()
     Button("Save to Project"){saveCode()}.buttonStyle(AccentButton()).disabled(store.active==nil || filename.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty)
    }
