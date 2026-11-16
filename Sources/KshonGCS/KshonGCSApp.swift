@@ -189,8 +189,8 @@ struct CodeWorkspacePage:View {
    let folder=project.folder.appendingPathComponent("Scripts",isDirectory:true)
    try FileManager.default.createDirectory(at:folder,withIntermediateDirectories:true)
    try source.write(to:folder.appendingPathComponent(safeName),atomically:true,encoding:.utf8)
-   status="Saved to Scripts/\\(safeName)"
-  } catch { status="Save failed: \\(error.localizedDescription)" }
+   status="Saved to Scripts/\(safeName)"
+  } catch { status="Save failed: \(error.localizedDescription)" }
  }
 }
 \nstruct TutorialPage:View{
