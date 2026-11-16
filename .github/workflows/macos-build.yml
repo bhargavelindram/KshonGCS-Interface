@@ -1,0 +1,25 @@
+name: Build KshonGCS for macOS
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+      - name: Build
+        run: swift build -c release
+      - name: Package app
+        run: bash scripts/package-macos-app.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KshonGCS-macOS
+          path: dist/KshonGCS-macOS.zip
+          retention-days: 30
