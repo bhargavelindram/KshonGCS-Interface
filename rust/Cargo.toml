@@ -1,6 +1,11 @@
 [workspace]
 resolver = "2"
-members = ["crates/kshon-core"]
+members = [
+    "crates/kshon-core",
+    "crates/ai/knf-tensor",
+    "crates/engine/ke-core",
+]
+
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
